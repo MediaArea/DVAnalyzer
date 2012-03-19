@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+Name=dvanalyzer-gui.desktop
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,video/*
+Actions=dvanalyzer-gui
+X-KDE-Priority=TopLevel
+
+[Desktop Action dvanalyzer-gui]
+Name=AVPS DV Analyzer
+GenericName=Media Analyzer
+Exec=dvanalyzer-gui %u
+Icon=dvanalyzer

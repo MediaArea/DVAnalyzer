@@ -1,0 +1,37 @@
+#! /bin/sh
+
+#-----------------------------------------------------------------------
+# $1=OS, $2=Platform
+Release_GUI()
+{
+#-----------------------------------------------------------------------
+# Clean up
+test -e AVPS_DV_Analyzer_GUI_$1_$2.tar     && rm    AVPS_DV_Analyzer_GUI_$1_$2.tar
+test -e AVPS_DV_Analyzer_GUI_$1_$2.tar.bz2 && rm    AVPS_DV_Analyzer_GUI_$1_$2.tar.bz2
+test -d AVPS_DV_Analyzer_GUI_$1_$2         && rm -r AVPS_DV_Analyzer_GUI_$1_$2
+mkdir   AVPS_DV_Analyzer_GUI_$1_$2
+
+#-----------------------------------------------------------------------
+# Copying : Exe
+cp ../Project/GNU/GUI/dvanalyzer-gui AVPS_DV_Analyzer_GUI_$1_$2/dvanalyzer-gui
+cd AVPS_DV_Analyzer_GUI_$1_$2
+strip dvanalyzer-gui
+cd ..
+
+#-----------------------------------------------------------------------
+# Copying : Information file
+cp ../License.html AVPS_DV_Analyzer_GUI_$1_$2/
+cp ../History_GUI.txt AVPS_DV_Analyzer_GUI_$1_$2/History.txt
+cp ReadMe_GUI_$1.txt AVPS_DV_Analyzer_GUI_$1_$2/ReadMe.txt
+
+#-----------------------------------------------------------------------
+# Compressing Archive
+tar jchf AVPS_DV_Analyzer_GUI_$1_$2.tar.bz2 AVPS_DV_Analyzer_GUI_$1_$2
+
+#-----------------------------------------------------------------------
+# Clean up
+#if "%1"=="SkipCleanUp" goto SkipCleanUp
+#rm -r AVPS_DV_Analyzer_GUI_$1_$2
+#:SkipCleanUp
+}
+

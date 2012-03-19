@@ -1,0 +1,8 @@
+ <!DOCTYPE RCC><RCC version="1.0">
+ <qresource><file>Image/Menu/File_Open_File.png</file></qresource>
+ <qresource><file>Image/Menu/File_Open_Directory.png</file></qresource>
+ <qresource><file>Image/Menu/Help_About.png</file></qresource>
+ <qresource><file>Image/AVPS/logo_sign_alpha.png</file></qresource>
+ <qresource><file>Image/AVPS/logo_sign_alpha_square.png</file></qresource>
+ <qresource><file>Image/AVPS/logo_avps_alpha.png</file></qresource>
+ </RCC>

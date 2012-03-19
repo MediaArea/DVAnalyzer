@@ -1,0 +1,111 @@
+Notes:
+------
++ Added
+- Deleted
+x Correction
+
+Version 1.4.1, 2012-03-19
+--------------
++ Update MediaInfo library to v0.7.54
+
+Version 1.4.0, 2010-05-02
+--------------
++ #81, A lot less memory usage (no more crash for big files because of memory allocation failure)
++ #110, continuous timecode math error on PAL files
++ #80, Support Apple Interchange Format version 3 (for FCP v5)
++ Some wording is more explicit
+x #78, Apple Interchange Format version 5: color attribute was wrongly implemented
+
+Version 1.3.4.2, 2009-11-01
+--------------
+(Intermediate version)
++ Arb bit reporting separation (new verbosity level)
++ FCP XML ignore non-DV files
+
+Version 1.3.4, 2009-10-30
+--------------
++ Updating to MediaInfo 0.7.24
+x 'repeating info' report when associated value is 0
+x Cosmetic changes
+
+Version 1.3.3, 2009-10-27
+--------------
++ Progress bar
++ Final Cut Pro XML (v4 and v5) output
++ Menu bar reorganization
++ Option in menu bar re-organized
++ XML export
++ Errors: percentage instead of numbers
++ Reset row height button
+x NAB/RAB wrongly reported
+
+Version 1.3.2, 2009-10-23
+--------------
++ Arb bits: more details
++ Arb bits: Non-Sequetial / Repeating info
++ Export menu
++ Cosmetic improvements
+
+Version 1.3.1, 2009-09-22
+--------------
++ "By frame": Table view
++ "Summary": Qualitative statements 
++ "Summary": Warn if the DV contains audio tracks that have no representation in the container
+x "XML": non sequential timecode bug
+
+Version 1.3.0, 2009-09-01
+--------------
++ Adapted source code in order to be used by both CLI and GUI
++ Arbitrary bit is reported (and incoherency error detection)
++ New arangement of summary
++ Summary for all errors
++ Stts (.mov, .mp4 time) fluctuation
++ XML output 
+
+Version 1.2.2, 2009-05-18
+--------------
+x "Date covered" was wrong if RecDate/RecTime were complex to decode
+x "xxx covered" had "start frame at" shifted by 1
+
+Version 1.2.1, 2009-05-15
+--------------
+x (based on v1.1.0, to be trashed)
+
+Version 1.2.0, 2009-05-06
+--------------
++ Frame number
++ Verbosity (see --Help-Verbosity for more info)
++ Footer: count of frames with incoherencies
++ Footer: timecode covered
++ Warning if there is some frame count incoherency
+x timecode incoherancy was skipped in some cases
+x somme audio errors were wrongly reported
+
+Version 1.1.0, 2009-05-04
+--------------
++ New error presentation
++ NULL block detection
++ invalid audio detection
+
+Version 1.0.1, not released
+--------------
+x Frame count was offset by 1
+x Some timestamps were wrongly reported (25 fps instead of 29.97 fps) (again!)
+
+Version 1.0.0, 2009-04-30
+--------------
++ 4 GB+ .mov support
++ Better support of NULL padded DIFs
++ With an official build of libmediainfo (0.7.15)
+x Some timestamps were wrongly reported (25 fps instead of 29.97 fps)
+x DropFrame was not well handled
+
+Version 0.9.0, 2009-04-27
+--------------
++ First official version, based on MediaInfo 0.7.15 BETA
++ STA errors detection
++ Timestamp, timecode, recdate, rectime
++ Detection of timecode gaps
++ Detection of rectime gap
++ detection of Start/End flags
++ Header/Footer (summary)
