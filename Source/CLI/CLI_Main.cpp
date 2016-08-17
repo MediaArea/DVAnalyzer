@@ -54,7 +54,7 @@ int main(int argc, char* argv_ansi[])
     {
         //First part of argument (before "=") should be case insensitive
         String Argument(argv[Pos]);
-        size_t Egal_Pos=Argument.find(_T('='));
+        size_t Egal_Pos=Argument.find(__T('='));
         if (Egal_Pos==string::npos)
             Egal_Pos=Argument.size();
         transform(Argument.begin(), Argument.begin()+Egal_Pos, Argument.begin(), (int(*)(int))tolower); //(int(*)(int)) is a patch for unix

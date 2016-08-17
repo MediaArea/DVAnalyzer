@@ -448,13 +448,13 @@ void GUI_Main::OnMenu_Export_Summary()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".txt");
+        FileName+=__T(".txt");
     #endif
     File F; F.Create(FileName);
     
     //Running
     Ztring ToWrite; ToWrite.From_UTF8(C->Summary());
-    ToWrite.FindAndReplace(_T("\n"), EOL, 0, Ztring_Recursive);
+    ToWrite.FindAndReplace(__T("\n"), EOL, 0, Ztring_Recursive);
     F.Write(ToWrite);
 }
 
@@ -472,13 +472,13 @@ void GUI_Main::OnMenu_Export_ByFrame()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".txt");
+        FileName+=__T(".txt");
     #endif
     File F; F.Create(FileName);
     
     //Running
     Ztring ToWrite; ToWrite.From_UTF8(C->ByFrame());
-    ToWrite.FindAndReplace(_T("\n"), EOL, 0, Ztring_Recursive);
+    ToWrite.FindAndReplace(__T("\n"), EOL, 0, Ztring_Recursive);
     F.Write(ToWrite);
 }
 
@@ -496,13 +496,13 @@ void GUI_Main::OnMenu_Export_XML()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".xml");
+        FileName+=__T(".xml");
     #endif
     File F; F.Create(FileName);
     
     //Running
     Ztring ToWrite; ToWrite.From_UTF8(C->XML());
-    ToWrite.FindAndReplace(_T("\n"), EOL, 0, Ztring_Recursive);
+    ToWrite.FindAndReplace(__T("\n"), EOL, 0, Ztring_Recursive);
     F.Write(ToWrite);
 }
 
@@ -520,13 +520,13 @@ void GUI_Main::OnMenu_Export_AppleXMLIFv3()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".xml");
+        FileName+=__T(".xml");
     #endif
     File F; F.Create(FileName);
     
     //Running
     Ztring ToWrite; ToWrite.From_UTF8(C->AppleXMLIF(3));
-    ToWrite.FindAndReplace(_T("\n"), EOL, 0, Ztring_Recursive);
+    ToWrite.FindAndReplace(__T("\n"), EOL, 0, Ztring_Recursive);
     F.Write(ToWrite);
 }
 
@@ -544,13 +544,13 @@ void GUI_Main::OnMenu_Export_AppleXMLIFv4()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".xml");
+        FileName+=__T(".xml");
     #endif
     File F; F.Create(FileName);
     
     //Running
     Ztring ToWrite; ToWrite.From_UTF8(C->AppleXMLIF(4));
-    ToWrite.FindAndReplace(_T("\n"), EOL, 0, Ztring_Recursive);
+    ToWrite.FindAndReplace(__T("\n"), EOL, 0, Ztring_Recursive);
     F.Write(ToWrite);
 }
 
@@ -568,13 +568,13 @@ void GUI_Main::OnMenu_Export_AppleXMLIFv5()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".xml");
+        FileName+=__T(".xml");
     #endif
     File F; F.Create(FileName);
     
     //Running
     Ztring ToWrite; ToWrite.From_UTF8(C->AppleXMLIF(5));
-    ToWrite.FindAndReplace(_T("\n"), EOL, 0, Ztring_Recursive);
+    ToWrite.FindAndReplace(__T("\n"), EOL, 0, Ztring_Recursive);
     F.Write(ToWrite);
 }
 
@@ -592,14 +592,14 @@ void GUI_Main::OnMenu_Export_MediaInfo_Text()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".txt");
+        FileName+=__T(".txt");
     #endif
     File F; F.Create(FileName);
     
     //Running
-    C->Menu_Option_Preferences_Option(_T("Language"), _T("raw"));
+    C->Menu_Option_Preferences_Option(__T("Language"), __T("raw"));
     Ztring ToWrite; ToWrite.From_UTF8(C->MediaInfo_Text());
-    C->Menu_Option_Preferences_Option(_T("Language"), Menu_Options_MediaInfo_RawFieldsNames->isChecked()?_T("raw"):_T(""));
+    C->Menu_Option_Preferences_Option(__T("Language"), Menu_Options_MediaInfo_RawFieldsNames->isChecked()?__T("raw"):__T(""));
     F.Write(ToWrite);
 }
 
@@ -617,14 +617,14 @@ void GUI_Main::OnMenu_Export_MediaInfo_XML()
     //Configuring
     ZenLib::Ztring FileName; FileName.From_UTF8(FileNamesQ.toUtf8().data());
     #if defined(_MACOSX)
-        FileName+=_T(".xml");
+        FileName+=__T(".xml");
     #endif
     File F; F.Create(FileName);
     
     //Running
-    C->Menu_Option_Preferences_Option(_T("Language"), _T("raw"));
+    C->Menu_Option_Preferences_Option(__T("Language"), __T("raw"));
     Ztring ToWrite; ToWrite.From_UTF8(C->MediaInfo_XML());
-    C->Menu_Option_Preferences_Option(_T("Language"), Menu_Options_MediaInfo_RawFieldsNames->isChecked()?_T("raw"):_T(""));
+    C->Menu_Option_Preferences_Option(__T("Language"), Menu_Options_MediaInfo_RawFieldsNames->isChecked()?__T("raw"):__T(""));
     F.Write(ToWrite);
 }
 
@@ -639,7 +639,7 @@ void GUI_Main::OnMenu_Options_ResetFieldSizes()
 void GUI_Main::OnMenu_Options_MediaInfo_InternalFields()
 {
     //Configuring
-    C->Menu_Option_Preferences_Option(_T("Complete"), Menu_Options_MediaInfo_InternalFields->isChecked()?_T("1"):_T("0"));
+    C->Menu_Option_Preferences_Option(__T("Complete"), Menu_Options_MediaInfo_InternalFields->isChecked()?__T("1"):__T("0"));
 
     //Showing
     if (View_Current==View_MediaInfo)
@@ -650,7 +650,7 @@ void GUI_Main::OnMenu_Options_MediaInfo_InternalFields()
 void GUI_Main::OnMenu_Options_MediaInfo_RawFieldsNames()
 {
     //Configuring
-    C->Menu_Option_Preferences_Option(_T("Language"), Menu_Options_MediaInfo_RawFieldsNames->isChecked()?_T("raw"):_T(""));
+    C->Menu_Option_Preferences_Option(__T("Language"), Menu_Options_MediaInfo_RawFieldsNames->isChecked()?__T("raw"):__T(""));
 
     //Showing
     if (View_Current==View_MediaInfo)

@@ -52,7 +52,7 @@ inline void STRINGOUT(const string &Text)
 {
     ZenLib::Ztring ToOutput; ToOutput.reserve(Text.size()+1000); ToOutput.From_UTF8(Text);
     #ifdef __WINDOWS__
-        ToOutput.FindAndReplace(_T("\r\n"), _T("\n"), 0, ZenLib::Ztring_Recursive); //MediaInfoLib handle differences between platforms, but cout too!
+        ToOutput.FindAndReplace(__T("\r\n"), __T("\n"), 0, ZenLib::Ztring_Recursive); //MediaInfoLib handle differences between platforms, but cout too!
     #endif //__WINDOWS__
     std::cout<<ToOutput.To_Local().c_str()<<std::endl;
 }
