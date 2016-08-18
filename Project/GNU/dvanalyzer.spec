@@ -21,6 +21,9 @@ BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	dos2unix
 BuildRequires: 	gcc-c++
 BuildRequires:	pkgconfig
+BuildRequires:  automake
+BuildRequires:  autoconf
+BuildRequires:  libtool
 %if 0%{?suse_version}
 BuildRequires:	update-desktop-files
 %endif
