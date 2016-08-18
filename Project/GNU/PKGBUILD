@@ -1,0 +1,63 @@
+# $Id$
+# Maintainer: MediaArea.net SARL <info@mediaarea.net>
+
+pkgname=('dvanalyzer' 'dvanalyzer-gui')
+pkgver=1.3.1
+pkgrel=1
+pkgdesc="Supplies technical and tag information about a video or audio file"
+url="http://mediaarea.net"
+license=('GPL')
+source=(${pkgname}_${pkgver}-1.tar.gz)
+md5sums=('00000000000000000000000000000000')
+arch=('i686' 'x86_64')
+makedepends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt4' 'qtchooser' 'ca-certificates')
+
+prepare() {
+    export QT_SELECT=4
+    
+    cd "${srcdir}"/dvanalyzer/Project/GNU/CLI
+    sh ./autogen
+    ./configure --prefix=/usr
+
+    cd "${srcdir}"/dvanalyzer/Project/GNU/GUI
+    sh ./autogen
+    ./configure --prefix=/usr
+}
+
+build() {
+    cd "${srcdir}"/dvanalyzer/Project/GNU/CLI
+    make
+
+    cd "${srcdir}"/dvanalyzer/Project/GNU/GUI
+    make
+}
+
+package_dvanalyzer() {
+    pkgdesc="${pkgdesc} (CLI)"
+    depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54')
+
+    cd "${srcdir}"/dvanalyzer/Project/GNU/CLI
+    make DESTDIR="${pkgdir}" install
+
+    install -D -m 0644 "${srcdir}"/dvanalyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
+    install -D -m 0644 "${srcdir}"/dvanalyzer/History_CLI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Release/ReadMe_CLI_Linux.txt "${pkgdir}"/usr/share/doc/${pkgname}/ReadMe.txt
+}
+
+package_dvanalyzer-gui() {
+    pkgdesc="${pkgdesc} (GUI)"
+    depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt4')
+    
+    cd "${srcdir}"/dvanalyzer/Project/GNU/GUI
+    make DESTDIR="${pkgdir}" install
+
+    install -D -m 0644 "${srcdir}"/dvanalyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
+    install -D -m 0644 "${srcdir}"/dvanalyzer/History_GUI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Release/ReadMe_GUI_Linux.txt "${pkgdir}"/usr/share/doc/${pkgname}/ReadMe.txt
+
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Source/Resource/Image/AVPS/logo_sign_alpha_square.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/dvanalyzer-gui.png
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Source/Resource/Image/AVPS/logo_sign_alpha_square.png "${pkgdir}"/usr/share/pixmaps/dvanalyzer-gui.png
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Project/GNU/GUI/dvanalyzer-gui.desktop "${pkgdir}"/usr/share/applications/dvanalyzer-gui.desktop
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Project/GNU/GUI/dvanalyzer-gui.kde3.desktop "${pkgdir}"/usr/share/apps/konqueror/servicemenus/dvanalyzer-gui.desktop
+    install -D -m 0644 "${srcdir}"/dvanalyzer/Project/GNU/GUI/dvanalyzer-gui.kde4.desktop "${pkgdir}"/usr/share/kde4/services/ServiceMenus/dvanalyzer-gui.desktop
+}
