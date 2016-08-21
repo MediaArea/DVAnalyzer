@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif
@@ -8,6 +8,11 @@
 #include "ZenLib/Conf.h"
 #include <vector>
 using namespace std;
+
+#if defined(_WIN32) && !defined(_DLL)
+    #include <QtPlugin>
+    Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
+#endif
 
 #ifdef __MACOSX__
     #include <ApplicationServices/ApplicationServices.h>

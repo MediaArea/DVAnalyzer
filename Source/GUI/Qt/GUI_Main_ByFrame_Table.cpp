@@ -22,10 +22,10 @@
 #include "Common/Core.h"
 #include "ZenLib/ZtringListList.h"
 #include "ZenLib/Ztring.h"
-#include <QtCore/QEvent>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QTableWidget>
-#include <QtGui/QComboBox>
+#include <QEvent>
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QComboBox>
 using namespace ZenLib;
 using namespace std;
 //---------------------------------------------------------------------------

@@ -20,16 +20,16 @@
 //---------------------------------------------------------------------------
 #include "GUI/Qt/GUI_About.h"
 #include "Common/Core.h"
-#include <QtGui/QTextEdit>
-#include <QtGui/QTextBrowser>
-#include <QtGui/QGridLayout>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QPushButton>
-#include <QtGui/QAbstractTextDocumentLayout>
-#include <QtGui/QScrollBar>
-#include <QtGui/QImage>
-#include <QtGui/QLabel>
-#include <QtGui/QDialogButtonBox>
+#include <QTextEdit>
+#include <QTextBrowser>
+#include <QGridLayout>
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QAbstractTextDocumentLayout>
+#include <QScrollBar>
+#include <QImage>
+#include <QLabel>
+#include <QDialogButtonBox>
 #include "Common/Common_About.h"
 //---------------------------------------------------------------------------
 

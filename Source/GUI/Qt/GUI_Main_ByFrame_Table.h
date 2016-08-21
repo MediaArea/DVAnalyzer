@@ -29,7 +29,7 @@
 
 //---------------------------------------------------------------------------
 class Core;
-#include <QtGui/QWidget>
+#include <QWidget>
 class QEvent;
 class QTableWidget;
 class QComboBox;

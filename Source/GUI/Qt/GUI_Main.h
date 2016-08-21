@@ -27,11 +27,11 @@
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QAction>
-#include <QtGui/QActionGroup>
-#include <QtGui/QToolBar>
+#include <QMainWindow>
+#include <QMenu>
+#include <QAction>
+#include <QActionGroup>
+#include <QToolBar>
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
