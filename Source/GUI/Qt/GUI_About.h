@@ -43,7 +43,7 @@ public:
     GUI_About (QWidget * parent);
     ~GUI_About ();
 
-private slots:
+private Q_SLOTS:
     //Menu - Actions
     void OnDescription                  ();
     void OnTechnicalSynopsis            ();

@@ -50,7 +50,7 @@ public:
     //Events
     bool event (QEvent *Event);
 
-private slots:
+private Q_SLOTS:
     void Files_Changed                  (int Pos); 
 
 private:

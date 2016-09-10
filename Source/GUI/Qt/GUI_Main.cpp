@@ -106,9 +106,9 @@ GUI_Main::GUI_Main(Core* _C)
 
     //Defaults
     Menu_View_Summary->setChecked(true);
-    emit OnMenu_View_Summary();
+    Q_EMIT OnMenu_View_Summary();
     Menu_Options_Verbosity_05->setChecked(true);
-    emit OnMenu_Options_Verbosity_05();
+    Q_EMIT OnMenu_Options_Verbosity_05();
 
     //GUI
     setWindowTitle("DV Analyzer - AudioVisual Preservation Solutions, Inc.");
@@ -178,7 +178,7 @@ void GUI_Main::dropEvent(QDropEvent *event)
     const QMimeData* Data=event->mimeData ();
     if (event->mimeData()->hasUrls())
     {
-        foreach (QUrl url, event->mimeData()->urls())
+        Q_FOREACH (QUrl url, event->mimeData()->urls())
         {
             Ztring FileName; FileName.From_UTF8(url.toLocalFile().toUtf8().data());
             #ifdef __WINDOWS__
