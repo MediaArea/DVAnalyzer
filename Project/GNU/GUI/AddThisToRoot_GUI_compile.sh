@@ -3,8 +3,15 @@
 #############################################################################
 # Configure
 Home=`pwd`
-MediaInfoLib_Options="" #--disable-all --enable-dvdif --enable-riff --enable-mpeg4 --enable-minimum --enable-events --enable-dvdif-analyze"
-ZenLib_Options=""
+AVPS_DV_Analyzer_Options="--enable-staticlibs"
+MediaInfoLib_Options="--enable-static --disable-shared"
+ZenLib_Options="--enable-static --disable-shared"
+
+if [ "$(uname -s)" = "Darwin" ] ; then
+    AVPS_DV_Analyzer_Options="$AVPS_DV_Analyzer_Options --with-macosx-version-min=10.5"
+    MediaInfoLib_Options="$MediaInfoLib_Options --with-macosx-version-min=10.5"
+    ZenLib_Options="$ZenLib_Options --with-macosx-version-min=10.5"
+fi
 
 #############################################################################
 # Setup for parallel builds
@@ -79,7 +86,7 @@ if test -e AVPS_DV_Analyzer/Project/GNU/GUI/configure; then
  cd AVPS_DV_Analyzer/Project/GNU/GUI/
  test -e Makefile && rm Makefile
  chmod u+x configure
- ./configure --enable-staticlibs $*
+ ./configure $AVPS_DV_Analyzer_Options $*
  if test -e Makefile; then
   make clean
   Zen_Make
