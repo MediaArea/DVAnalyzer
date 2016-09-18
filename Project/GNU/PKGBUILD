@@ -10,18 +10,16 @@ license=('GPL')
 source=(${pkgname}_${pkgver}-1.tar.gz)
 md5sums=('00000000000000000000000000000000')
 arch=('i686' 'x86_64')
-makedepends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt4' 'qtchooser' 'ca-certificates')
+makedepends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt5-base' 'qt5-tools' 'ca-certificates')
 
 prepare() {
-    export QT_SELECT=4
-    
     cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/CLI
     sh ./autogen
     ./configure --prefix=/usr
 
     cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI
     sh ./autogen
-    ./configure --prefix=/usr
+    CXXFLAGS="-fPIC" ./configure --prefix=/usr
 }
 
 build() {
@@ -46,7 +44,7 @@ package_dvanalyzer() {
 
 package_dvanalyzer-gui() {
     pkgdesc="${pkgdesc} (GUI)"
-    depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt4')
+    depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt5-base')
     
     cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI
     make DESTDIR="${pkgdir}" install

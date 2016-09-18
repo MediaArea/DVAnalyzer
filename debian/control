@@ -29,6 +29,31 @@ Description: DV Analyzer provides two primary services simultaneously:
  meaningful ways when working with and preserving DV content. This is
  particularly useful in documenting source material of edited DV content.
 
+Package: dvanalyzer-dbg
+Section: debug
+Architecture: any
+Depends: dvanalyzer (= ${binary:Version})
+Description: DV Analyzer provides two primary services simultaneously:
+ .
+ Error Detection and Quality Control
+ The reformatting of DV tapes (such as miniDV, DVCam, and DVCPro) to
+ DV file-based formats is a point when the introduction of permanent errors
+ is of particularly high risk. Most capture tools for DV only report errors
+ if they are significant, such as a lost frame, whereas other documented
+ errors are not reviewed. DVanalyzer provides a way to analyze and report
+ audio, video, subcode, and structural errors within a DV file. This enables
+ automated quality control and the ability to verify the accuracy and
+ integrity of the reformatting process on a frame-by-frame basis.
+ .
+ Temporal Metadata Reporting
+ The DV format is rich with temporal metadata. Every frame may contain
+ time code, recording date and time information, recording markers, and more.
+ DVanalyzer reports this information which can be used in a variety of
+ meaningful ways when working with and preserving DV content. This is
+ particularly useful in documenting source material of edited DV content.
+ .
+ This package contains the debugging symbols.
+
 Package: dvanalyzer-gui
 Section: utils
 Architecture: any
@@ -53,3 +78,28 @@ Description: DV Analyzer provides two primary services simultaneously:
  particularly useful in documenting source material of edited DV content.
  .
  This package contains the graphical user interface
+
+Package: dvanalyzer-gui-dbg
+Section: debug
+Architecture: any
+Depends: dvanalyzer-gui (= ${binary:Version})
+Description: DV Analyzer provides two primary services simultaneously:
+ .
+ Error Detection and Quality Control
+ The reformatting of DV tapes (such as miniDV, DVCam, and DVCPro) to
+ DV file-based formats is a point when the introduction of permanent errors
+ is of particularly high risk. Most capture tools for DV only report errors
+ if they are significant, such as a lost frame, whereas other documented
+ errors are not reviewed. DVanalyzer provides a way to analyze and report
+ audio, video, subcode, and structural errors within a DV file. This enables
+ automated quality control and the ability to verify the accuracy and
+ integrity of the reformatting process on a frame-by-frame basis.
+ .
+ Temporal Metadata Reporting
+ The DV format is rich with temporal metadata. Every frame may contain
+ time code, recording date and time information, recording markers, and more.
+ DVanalyzer reports this information which can be used in a variety of
+ meaningful ways when working with and preserving DV content. This is
+ particularly useful in documenting source material of edited DV content.
+ .
+ This package contains the debugging symbols of the graphical user interface.

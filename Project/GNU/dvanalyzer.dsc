@@ -1,6 +1,6 @@
 Format: 1.0
 Source: dvanalyzer
-Binary: dvanalyzer, dvanalyzer-gui
+Binary: dvanalyzer, dvanalyzer-dbg, dvanalyzer-gui, dvanalyzer-gui-dbg
 Architecture: any
 Version: 1.4.1-1
 Maintainer: Jerome Martinez <zen@mediaarea.net>
