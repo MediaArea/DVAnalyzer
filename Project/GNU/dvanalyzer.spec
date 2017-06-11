@@ -70,6 +70,10 @@ BuildRequires:	qt-devel
 BuildRequires:	libqt4-devel
 %endif
 
+%if 0%{?fedora_version} == 99
+BuildRequires: gnu-free-sans-fonts
+%endif
+
 %if 0%{?suse_version} ||  0%{?opensuse_version}
 Requires:	libqt4 >= 4.0.0
 Requires:	libqt4-x11 >= 4.0.0
@@ -110,7 +114,11 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 pushd Project/GNU/CLI
 	%__chmod +x autogen
 	./autogen
-	%configure
+	%if 0%{?mageia} > 5
+		%configure --disable-dependency-tracking
+	%else
+		%configure
+	%endif
 
 	%__make %{?jobs:-j%{jobs}}
 popd
@@ -119,7 +127,11 @@ popd
 pushd Project/GNU/GUI
 	%__chmod +x autogen
 	./autogen
-	%configure
+	%if 0%{?mageia} > 5
+		%configure --disable-dependency-tracking
+	%else
+		%configure
+	%endif
 
 	%__make %{?jobs:-j%{jobs}}
 popd
