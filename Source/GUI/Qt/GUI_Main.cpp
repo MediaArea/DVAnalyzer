@@ -22,8 +22,8 @@
 #include "Common/Core.h"
 #include <vector>
 #include <algorithm>
-#include <QtGui/QStatusBar>
-#include <QtGui/QTextEdit>
+#include <QStatusBar>
+#include <QTextEdit>
 #include "GUI/Qt/GUI_Main_ByFrame_Table.h"
 #include "GUI/Qt/GUI_Main_ByFrame_Text.h"
 #include "GUI/Qt/GUI_Main_MediaInfo.h"
@@ -32,17 +32,17 @@
 #include "GUI/Qt/GUI_Main_AppleXMLIFv3.h"
 #include "GUI/Qt/GUI_Main_AppleXMLIFv4.h"
 #include "GUI/Qt/GUI_Main_AppleXMLIFv5.h"
-#include <QtCore/QEvent>
-#include <QtCore/QMimeData>
-#include <QtCore/QUrl>
-#include <QtGui/QApplication>
-#include <QtGui/QDropEvent>
-#include <QtGui/QDragEnterEvent>
-#include <QtGui/QDesktopWidget>
-#include <QtGui/QTabWidget>
-#include <QtGui/QProgressDialog>
-#include <QtCore/QThread>
-#include <QtCore/QTimer>
+#include <QEvent>
+#include <QMimeData>
+#include <QUrl>
+#include <QApplication>
+#include <QDropEvent>
+#include <QDragEnterEvent>
+#include <QDesktopWidget>
+#include <QTabWidget>
+#include <QProgressDialog>
+#include <QThread>
+#include <QTimer>
 #include "ZenLib/Ztring.h"
 using namespace std;
 using namespace ZenLib;
@@ -106,9 +106,9 @@ GUI_Main::GUI_Main(Core* _C)
 
     //Defaults
     Menu_View_Summary->setChecked(true);
-    emit OnMenu_View_Summary();
+    Q_EMIT OnMenu_View_Summary();
     Menu_Options_Verbosity_05->setChecked(true);
-    emit OnMenu_Options_Verbosity_05();
+    Q_EMIT OnMenu_Options_Verbosity_05();
 
     //GUI
     setWindowTitle("DV Analyzer - AudioVisual Preservation Solutions, Inc.");
@@ -178,7 +178,7 @@ void GUI_Main::dropEvent(QDropEvent *event)
     const QMimeData* Data=event->mimeData ();
     if (event->mimeData()->hasUrls())
     {
-        foreach (QUrl url, event->mimeData()->urls())
+        Q_FOREACH (QUrl url, event->mimeData()->urls())
         {
             Ztring FileName; FileName.From_UTF8(url.toLocalFile().toUtf8().data());
             #ifdef __WINDOWS__

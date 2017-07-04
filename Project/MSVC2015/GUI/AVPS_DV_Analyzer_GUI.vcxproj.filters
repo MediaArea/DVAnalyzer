@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{3e6630f9-afcd-48fe-8939-82ec7f161296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GUI\Automated">
+      <UniqueIdentifier>{ca6644d4-c269-4a85-9976-315309e22687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Common">
+      <UniqueIdentifier>{9980a281-9fb2-4013-b65f-6a8374d5fafc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\GUI">
+      <UniqueIdentifier>{bafac30e-c113-4a88-b5f6-2f0ae469851b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common">
+      <UniqueIdentifier>{9f223c81-191d-4a09-99c1-e7a4b402ae73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\App.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_About.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Help.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_ByFrame_Table.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_ByFrame_Text.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_AppleXMLIFv3.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_AppleXMLIFv4.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_AppleXMLIFv5.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_MediaInfo.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_Menu.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_Summary.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Qt\GUI_Main_XML.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_About.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Help.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_ByFrame_Table.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_ByFrame_Text.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_AppleXMLIFv3.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_AppleXMLIFv4.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_AppleXMLIFv5.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_MediaInfo.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_Summary.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\moc_GUI_Main_XML.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="_Automated\qrc_GUI_Main.cpp">
+      <Filter>Source Files\GUI\Automated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Common\Common_About.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Common\Common_Help.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Common\Core.cpp">
+      <Filter>Source Files\Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\App.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_About.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Help_ByFrame.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Help_Summary.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_ByFrame_Table.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_ByFrame_Text.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_AppleXMLIFv3.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_AppleXMLIFv4.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_AppleXMLIFv5.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_MediaInfo.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_Summary.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Qt\GUI_Main_XML.h">
+      <Filter>Header Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Common_About.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Common_Help.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Core.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Common\Help.h">
+      <Filter>Header Files\Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AVPS_DV_Analyzer_GUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\..\..\Source\GUI\Qt\GUI_Main.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

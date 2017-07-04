@@ -5,7 +5,7 @@ RequestExecutionLevel admin
 !define PRODUCT_NAME "AVPS DV Analyzer"
 !define PRODUCT_PUBLISHER "AudioVisual Preservation Solutions"
 !define PRODUCT_VERSION "1.4.1"
-!define PRODUCT_VERSION4 "1.4.1.0"
+!define PRODUCT_VERSION4 "${PRODUCT_VERSION}.0"
 !define PRODUCT_WEB_SITE "http://www.digitizationguidelines.gov"
 !define COMPANY_REGISTRY "Software\AVPS"
 !define PRODUCT_REGISTRY "Software\AVPS\DV Analyzer"
@@ -46,11 +46,11 @@ SetCompressor /FINAL /SOLID lzma
 
 ; Info
 VIProductVersion "${PRODUCT_VERSION4}"
-VIAddVersionKey "ProductName" "${PRODUCT_NAME}" 
+VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
 VIAddVersionKey "Comments" "DV Analyzer"
 VIAddVersionKey "CompanyName" "AVPS"
-VIAddVersionKey "LegalTrademarks" "BSD license" 
-VIAddVersionKey "LegalCopyright" "" 
+VIAddVersionKey "LegalTrademarks" "BSD license"
+VIAddVersionKey "LegalCopyright" ""
 VIAddVersionKey "FileDescription" "DV Analyzer"
 VIAddVersionKey "FileVersion" "${PRODUCT_VERSION}"
 BrandingText " "
@@ -78,7 +78,7 @@ Section "SectionPrincipale" SEC01
   SetOutPath "$INSTDIR"
   CreateDirectory "$SMPROGRAMS\DV Analyzer"
   CreateShortCut "$SMPROGRAMS\DV Analyzer\DV Analyzer.lnk" "$INSTDIR\AVPS_DV_Analyzer_GUI.exe" "" "" "" "" "" "DV Analyzer ${PRODUCT_VERSION}"
-  File "/oname=AVPS_DV_Analyzer_GUI.exe" "..\..\Project\MSVC2010\GUI\Win32\Release\AVPS_DV_Analyzer_GUI.exe"
+  File "/oname=AVPS_DV_Analyzer_GUI.exe" "..\..\Project\MSVC2015\GUI\Win32\Release\AVPS_DV_Analyzer_GUI.exe"
   File "/oname=History.txt" "..\..\History_GUI.txt"
   File "..\..\License.html"
   File  "/oname=ReadMe.txt""..\..\Release\ReadMe_GUI_Windows.txt"
@@ -94,11 +94,11 @@ SectionEnd
 
 Section -Post
   WriteUninstaller "$INSTDIR\uninst.exe"
-  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\MediaInfo.exe"
+  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\AVPS_DV_Analyzer_GUI.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\MediaInfo.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\AVPS_DV_Analyzer_GUI.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
 SectionEnd

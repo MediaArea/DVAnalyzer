@@ -27,11 +27,11 @@
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenu>
-#include <QtGui/QAction>
-#include <QtGui/QActionGroup>
-#include <QtGui/QToolBar>
+#include <QMainWindow>
+#include <QMenu>
+#include <QAction>
+#include <QActionGroup>
+#include <QToolBar>
 //---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
@@ -115,7 +115,7 @@ public:
     QAction*        Menu_Help_AVPS_Website;
     QAction*        Menu_Help_DvAnalyzer_Website;
 
- private slots:
+ private Q_SLOTS:
     //Menu - Actions
     void OnMenu_File_Open_Files                 ();
     void OnMenu_File_Open_Directory             ();

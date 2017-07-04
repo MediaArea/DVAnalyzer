@@ -36,7 +36,7 @@
 
 //Parse Command Line
 #define OPTION(_TEXT, _TOLAUNCH) \
-    else if (Argument.find(_T(_TEXT))==0)        return CL_##_TOLAUNCH(C, Argument); \
+    else if (Argument.find(__T(_TEXT))==0)        return CL_##_TOLAUNCH(C, Argument); \
 
 
 //***************************************************************************
@@ -175,10 +175,10 @@ CL_OPTION(Verbosity)
     {
         Value.assign(Argument, 12, std::string::npos);
         if (Value.size()<2)
-            Value=_T("0.")+Value;
+            Value=__T("0.")+Value;
     }
     else
-        Value=_T('1');
+        Value=__T('1');
 
     C.Menu_Verbosity_XX(Value);
 
@@ -206,7 +206,7 @@ CL_OPTION(LogFile)
 CL_OPTION(Default)
 {
     //Form : --Option=Text
-    size_t Egal_Pos=Argument.find(_T('='));
+    size_t Egal_Pos=Argument.find(__T('='));
     if (Egal_Pos<2)
         return 0;
     MediaInfoNameSpace::String Option(Argument, 2, Egal_Pos-2);
@@ -214,7 +214,7 @@ CL_OPTION(Default)
     if (Egal_Pos!=std::string::npos)
         Value.assign(Argument, Egal_Pos+1, std::string::npos);
     else
-        Value=_T('1');
+        Value=__T('1');
 
     C.Menu_Option_Preferences_Option(Option, Value);
 

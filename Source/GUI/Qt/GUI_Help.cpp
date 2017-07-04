@@ -21,13 +21,13 @@
 #include "GUI/Qt/GUI_Help.h"
 #include "Common/Core.h"
 #include "Common/Common_Help.h"
-#include <QtGui/QTextBrowser>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QPushButton>
-#include <QtGui/QDialogButtonBox>
-#include <QtGui/QApplication>
-#include <QtGui/QDesktopWidget>
-#include <QtGui/QTabWidget>
+#include <QTextBrowser>
+#include <QVBoxLayout>
+#include <QPushButton>
+#include <QDialogButtonBox>
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QTabWidget>
 //---------------------------------------------------------------------------
 
 //***************************************************************************

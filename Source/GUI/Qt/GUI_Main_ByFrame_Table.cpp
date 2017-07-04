@@ -22,10 +22,10 @@
 #include "Common/Core.h"
 #include "ZenLib/ZtringListList.h"
 #include "ZenLib/Ztring.h"
-#include <QtCore/QEvent>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QTableWidget>
-#include <QtGui/QComboBox>
+#include <QEvent>
+#include <QVBoxLayout>
+#include <QTableWidget>
+#include <QComboBox>
 using namespace ZenLib;
 using namespace std;
 //---------------------------------------------------------------------------
@@ -129,22 +129,22 @@ void GUI_Main_ByFrame_Table::Files_Changed (int Pos)
             //Adaptation
             switch (Data_Pos)
             {
-                case  0 : Value=_T("Frame #"); break;
-                case  1 : Value=_T("Absolute time"); break;
-                case  2 : Value=_T("DV timecode"); break;
-                case  3 : Value=_T("DV timecode info"); break;
-                case  4 : Value=_T("Rec. date/time"); break;
-                case  5 : Value=_T("Rec. date/time info"); break;
-                case  6 : Value=_T("Arb bits"); break;
-                case  7 : Value=_T("Arb bits info"); break;
-                case  8 : Value=_T("Start"); break;
-                case  9 : Value=_T("End"); break;
-                case 20 : Value=_T("Video error concealment"); break;
-                case 21 : Value=_T("Audio errors"); break;
-                case 22 : Value=_T("DV timecode incoherency"); break;
-                case 23 : Value=_T("DIF incoherency"); break;
-                case 24 : Value=_T("Arbitrary bit inconsistency"); break;
-                case 25 : Value=_T("Stts fluctuation"); break;
+                case  0 : Value=__T("Frame #"); break;
+                case  1 : Value=__T("Absolute time"); break;
+                case  2 : Value=__T("DV timecode"); break;
+                case  3 : Value=__T("DV timecode info"); break;
+                case  4 : Value=__T("Rec. date/time"); break;
+                case  5 : Value=__T("Rec. date/time info"); break;
+                case  6 : Value=__T("Arb bits"); break;
+                case  7 : Value=__T("Arb bits info"); break;
+                case  8 : Value=__T("Start"); break;
+                case  9 : Value=__T("End"); break;
+                case 20 : Value=__T("Video error concealment"); break;
+                case 21 : Value=__T("Audio errors"); break;
+                case 22 : Value=__T("DV timecode incoherency"); break;
+                case 23 : Value=__T("DIF incoherency"); break;
+                case 24 : Value=__T("Arbitrary bit inconsistency"); break;
+                case 25 : Value=__T("Stts fluctuation"); break;
                 case 26 : Value.clear(); break;
                 case 27 : Value.clear(); break;
                 case 28 : Value.clear(); break;
@@ -167,18 +167,18 @@ void GUI_Main_ByFrame_Table::Files_Changed (int Pos)
                 {
                     Ztring &Value=List[File_Pos][Data_Pos];
                     Value.Trim();
-                    while (Value.FindAndReplace(_T("  "), _T(" "), 0, Ztring_Recursive));
-                    while (Value.FindAndReplace(_T("( "), _T("("), 0, Ztring_Recursive));
+                    while (Value.FindAndReplace(__T("  "), __T(" "), 0, Ztring_Recursive));
+                    while (Value.FindAndReplace(__T("( "), __T("("), 0, Ztring_Recursive));
 
                     switch (Data_Pos)
                     {
                         case  3 :   //Timecode Info
                         case  5 :   //Rec. Date / Time Info"
                         case  7 :   //Arb bits Info"
-                                    if (Value==_T("R"))
-                                        Value=_T("Repeated");
-                                    if (Value==_T("N"))
-                                        Value=_T("Not Sequential");
+                                    if (Value==__T("R"))
+                                        Value=__T("Repeated");
+                                    if (Value==__T("N"))
+                                        Value=__T("Not Sequential");
                                     break;
                         default : ;
                     }

@@ -98,7 +98,8 @@ binary-arch: build install
 #	dh_installinfo
 	dh_installman
 	dh_link
-	dh_strip
+	dh_strip -p dvanalyzer --dbg-package=dvanalyzer-dbg
+	dh_strip -p dvanalyzer-gui --dbg-package=dvanalyzer-gui-dbg
 	dh_compress
 	dh_fixperms
 #	dh_perl

@@ -21,12 +21,20 @@ BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	dos2unix
 BuildRequires: 	gcc-c++
 BuildRequires:	pkgconfig
+BuildRequires:  automake
+BuildRequires:  autoconf
+BuildRequires:  libtool
 %if 0%{?suse_version}
 BuildRequires:	update-desktop-files
 %endif
 BuildRequires:	libmediainfo-devel >= %libmediainfo_version
 BuildRequires:	libzen-devel >= %libzen_version
 BuildRequires: 	zlib-devel
+%if 0%{?mageia}
+BuildRequires:  sane-backends-iscan
+BuildRequires:  libuuid-devel
+%endif
+
 Requires:	libzen0 >= %libzen_version
 Requires:	libmediainfo0 >= %libmediainfo_version
 
@@ -55,23 +63,20 @@ particularly useful in documenting source material of edited DV content.
 %package gui
 Summary:	Supplies technical and tag information about a video or audio file (GUI)
 Group:		Productivity/Multimedia/Other
+
+%if 0%{?fedora_version} >= 23
+BuildRequires:	qt-devel
+%else
 BuildRequires:	libqt4-devel
-%if 0%{?suse_version}
-BuildRequires:	update-desktop-files
 %endif
-Requires:	libzen0 >= %libzen_version
-Requires:	libmediainfo0 >= %libmediainfo_version
-# %if 0%{?fedora_version}
-# Requires:	qt >= 4.0.0
-# %endif
-%if 0%{?centos_version} ||  0%{?rhel_version} || 0%{?fedora_version}
-Requires:	qt4 >= 4.0.0
+
+%if 0%{?fedora_version} == 99
+BuildRequires: gnu-free-sans-fonts
 %endif
-%if 0%{?mandriva}
-Requires:	libqtgui4 >= 4.0.0
-%endif
+
 %if 0%{?suse_version} ||  0%{?opensuse_version}
 Requires:	libqt4 >= 4.0.0
+Requires:	libqt4-x11 >= 4.0.0
 %endif
 
 %description gui
@@ -109,7 +114,11 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 pushd Project/GNU/CLI
 	%__chmod +x autogen
 	./autogen
-	%configure
+	%if 0%{?mageia} > 5
+		%configure --disable-dependency-tracking
+	%else
+		%configure
+	%endif
 
 	%__make %{?jobs:-j%{jobs}}
 popd
@@ -118,18 +127,22 @@ popd
 pushd Project/GNU/GUI
 	%__chmod +x autogen
 	./autogen
-	%configure
+	%if 0%{?mageia} > 5
+		%configure --disable-dependency-tracking
+	%else
+		%configure
+	%endif
 
 	%__make %{?jobs:-j%{jobs}}
 popd
 
 %install
 pushd Project/GNU/CLI
-	%__make install-strip DESTDIR=%{buildroot}
+	%__make install DESTDIR=%{buildroot}
 popd
 
 pushd Project/GNU/GUI
-	%__make install-strip DESTDIR=%{buildroot}
+	%__make install DESTDIR=%{buildroot}
 popd
 
 # icon
