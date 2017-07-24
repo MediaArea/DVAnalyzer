@@ -100,7 +100,7 @@ dnl if test "$with_qt" != "no"; then
 				# Qt5 Don't support pkgconfig on MacOS
 				CFLAGS="$CFLAGS -I../../../../qt/lib/QtCore.framework/Headers -I../../../../qt/lib/QtGui.framework/Headers -I../../../../qt/lib/QtWidgets.framework/Headers -F../../../../qt/lib"
 				CXXFLAGS="$CXXFLAGS -I../../../../qt/lib/QtCore.framework/Headers -I../../../../qt/lib/QtGui.framework/Headers -I../../../../qt/lib/QtWidgets.framework/Headers -F../../../../qt/lib"
-				LIBS="$LIBS -framework Carbon -framework AppKit -framework ApplicationServices -framework QtCore -framework QtGui -framework QtWidgets"
+				LIBS="$LIBS -framework CoreFoundation -framework Carbon -framework AppKit -framework ApplicationServices -framework QtCore -framework QtGui -framework QtWidgets"
 				break
 			;;
 			*)
