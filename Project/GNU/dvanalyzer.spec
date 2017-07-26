@@ -32,6 +32,9 @@ BuildRequires:	libzen-devel >= %libzen_version
 BuildRequires: 	zlib-devel
 %if 0%{?mageia}
 BuildRequires:  sane-backends-iscan
+%if 0%{?mageia} > 5
+BuildRequires:  libproxy-pacrunner
+%endif
 BuildRequires:  libuuid-devel
 %endif
 
@@ -64,19 +67,18 @@ particularly useful in documenting source material of edited DV content.
 Summary:	Supplies technical and tag information about a video or audio file (GUI)
 Group:		Productivity/Multimedia/Other
 
-%if 0%{?fedora_version} >= 23
-BuildRequires:	qt-devel
+%if 0%{?fedora_version}
+BuildRequires:  pkgconfig(Qt5)
 %else
-BuildRequires:	libqt4-devel
+%if 0%{?mageia}
+%ifarch x86_64
+BuildRequires:  lib64qt5base5-devel
+%else
+BuildRequires:  libqt5base5-devel
 %endif
-
-%if 0%{?fedora_version} == 99
-BuildRequires: gnu-free-sans-fonts
+%else
+BuildRequires:  libqt4-devel
 %endif
-
-%if 0%{?suse_version} ||  0%{?opensuse_version}
-Requires:	libqt4 >= 4.0.0
-Requires:	libqt4-x11 >= 4.0.0
 %endif
 
 %description gui
@@ -107,8 +109,8 @@ dos2unix     *.txt Release/*.txt
 %__chmod 644 *.html *.txt Release/*.txt
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS"
-export CXXFLAGS="$RPM_OPT_FLAGS"
+export CFLAGS="$RPM_OPT_FLAGS -fPIC"
+export CXXFLAGS="$RPM_OPT_FLAGS -fPIC"
 
 # build CLI
 pushd Project/GNU/CLI
