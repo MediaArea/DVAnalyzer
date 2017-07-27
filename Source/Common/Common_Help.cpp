@@ -161,5 +161,5 @@ const char* Help_Details_Text() {return
 "Arbitrary bit inconsistency\n"
 "Notes when the Arbitrary bits within a frame are not consistent. The information that makes up the bit is 'arbitrary', but the pattern it follows within the file is not. As such, inconsistencies in the pattern can indicate issues with the frame, such as when data from two different frames is mixed into a single frame (from recording over recordings or glitchy playout).\n"
 "Stts fluctuation\n"
-"Notes frames that are assigned a presentation time that is longer or shorter than the other frames (normally all DV frames are presented for same amount of time). Occasionally this is indicative of audio/video sync issues and may present a stutter during playback."
+"Notes frames that are assigned a presentation time that is longer or shorter than the other frames (normally all DV frames are presented for same amount of time). Occasionally this is indicative of audio/video sync issues and may present a stutter during playback.\n"
 ;}
