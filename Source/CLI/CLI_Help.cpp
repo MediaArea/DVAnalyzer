@@ -54,7 +54,7 @@ std::string Help()
     ToDisplay<<"--Verbosity=x      Set the verbosity of the output"<<std::endl;
     ToDisplay<<""<<std::endl;
     ToDisplay<<"--Help-Summary     Display more info about the output format (short)"<<std::endl;
-    ToDisplay<<"--Help-Detail      Display more info about the output format (long)"<<std::endl;
+    ToDisplay<<"--Help-Details     Display more info about the output format (long)"<<std::endl;
     ToDisplay<<"--Help-Verbosity   Display more info about the verbosity option"<<std::endl;
     ToDisplay<<"--LogFile=...      Save the output in the specified file"<<std::endl;
 
