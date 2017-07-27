@@ -110,8 +110,8 @@ dnl if test "$with_qt" != "no"; then
 		with_qt="builtin"
 
 	elif pkg-config --exists Qt5Widgets; then
-		CFLAGS="$CFLAGS $(pkg-config Qt5Widgets --cflags)"
-		CXXFLAGS="$CXXFLAGS $(pkg-config Qt5Widgets --cflags)"
+		CFLAGS="$CFLAGS $(pkg-config Qt5Widgets --cflags) -fPIC"
+		CXXFLAGS="$CXXFLAGS $(pkg-config Qt5Widgets --cflags) -fPIC"
 		LIBS="$LIBS $(pkg-config Qt5Widgets --libs)"
 
 		MOC="$(pkg-config Qt5Gui --variable=prefix)/bin/moc"

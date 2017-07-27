@@ -1,7 +1,7 @@
 Source: dvanalyzer
 Priority: optional
 Maintainer: Jerome Martinez <zen@mediaarea.net>
-Build-Depends: debhelper (>= 5), tofrodos, libmediainfo-dev, qtbase5-dev, qt5-default, zlib1g-dev, pkg-config, automake, autoconf, libtool
+Build-Depends: debhelper (>= 5), tofrodos, libmediainfo-dev, libzen-dev, libqt4-dev, zlib1g-dev, pkg-config, automake, autoconf, libtool
 Standards-Version: 3.7.3
 Section: libs
 Homepage: http://mediainfo.sourceforge.net
