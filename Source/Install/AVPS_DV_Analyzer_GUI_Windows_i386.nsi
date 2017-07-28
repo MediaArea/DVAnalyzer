@@ -3,13 +3,14 @@ RequestExecutionLevel admin
 
 ; Some defines
 !define PRODUCT_NAME "AVPS DV Analyzer"
+!define PRODUCT_NAME_EXE "AVPS_DV_Analyzer.exe"
 !define PRODUCT_PUBLISHER "AudioVisual Preservation Solutions"
 !define PRODUCT_VERSION "1.4.1"
 !define PRODUCT_VERSION4 "${PRODUCT_VERSION}.0"
 !define PRODUCT_WEB_SITE "http://www.digitizationguidelines.gov"
 !define COMPANY_REGISTRY "Software\AVPS"
 !define PRODUCT_REGISTRY "Software\AVPS\DV Analyzer"
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\AVPS_DV_Analyzer.exe"
+!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT_NAME_EXE}"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
@@ -32,7 +33,7 @@ SetCompressor /FINAL /SOLID lzma
 ; Installer pages
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_RUN "$INSTDIR\AVPS_DV_Analyzer_GUI.exe"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\${PRODUCT_NAME_EXE}"
 !insertmacro MUI_PAGE_FINISH
 ; Uninstaller pages
 !insertmacro MUI_UNPAGE_WELCOME
@@ -74,31 +75,32 @@ Function .onInit
 FunctionEnd
 
 Section "SectionPrincipale" SEC01
-  SetOverwrite ifnewer
+  SetOverwrite on
+
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}.lnk" "$INSTDIR\${PRODUCT_NAME_EXE}" "" "" "" "" "" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
   SetOutPath "$INSTDIR"
-  CreateDirectory "$SMPROGRAMS\DV Analyzer"
-  CreateShortCut "$SMPROGRAMS\DV Analyzer\DV Analyzer.lnk" "$INSTDIR\AVPS_DV_Analyzer_GUI.exe" "" "" "" "" "" "DV Analyzer ${PRODUCT_VERSION}"
   File "/oname=AVPS_DV_Analyzer_GUI.exe" "..\..\Project\MSVC2015\GUI\Win32\Release\AVPS_DV_Analyzer_GUI.exe"
   File "/oname=History.txt" "..\..\History_GUI.txt"
   File "..\..\License.html"
   File  "/oname=ReadMe.txt""..\..\Release\ReadMe_GUI_Windows.txt"
-SectionEnd
 
-Section -AdditionalIcons
-  SetOutPath $INSTDIR
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
-  CreateShortCut "$SMPROGRAMS\DV Analyzer\Website.lnk" "$INSTDIR\${PRODUCT_NAME}.url" "" "" "" "" "" "Website"
-  CreateShortCut "$SMPROGRAMS\DV Analyzer\Uninstall.lnk" "$INSTDIR\uninst.exe" "" "" "" "" "" "Uninstall MediaInfo"
-  CreateShortCut "$SMPROGRAMS\DV Analyzer\History.lnk" "$INSTDIR\History.txt" "" "" "" "" "" "History"
+
+  # Delete files that might be present from older installation
+  Delete "$SMPROGRAMS\DV Analyzer\DV Analyzer.lnk"
+  Delete "$SMPROGRAMS\DV Analyzer\Uninstall.lnk"
+  Delete "$SMPROGRAMS\DV Analyzer\Website.lnk"
+  Delete "$SMPROGRAMS\DV Analyzer\History.lnk"
+  RMDir  "$SMPROGRAMS\DV Analyzer"
 SectionEnd
 
 Section -Post
   WriteUninstaller "$INSTDIR\uninst.exe"
-  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\AVPS_DV_Analyzer_GUI.exe"
+  WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\${PRODUCT_NAME_EXE}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\AVPS_DV_Analyzer_GUI.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\${PRODUCT_NAME_EXE}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
 SectionEnd
@@ -107,16 +109,10 @@ SectionEnd
 Section Uninstall
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
-  Delete "$INSTDIR\AVPS_DV_Analyzer_GUI.exe"
+  Delete "$INSTDIR\${PRODUCT_NAME_EXE}"
   Delete "$INSTDIR\History.txt"
   Delete "$INSTDIR\License.html"
   Delete "$INSTDIR\ReadMe.txt"
-  Delete "$SMPROGRAMS\DV Analyzer\Uninstall.lnk"
-  Delete "$SMPROGRAMS\DV Analyzer\Website.lnk"
-  Delete "$SMPROGRAMS\DV Analyzer\DV Analyzer.lnk"
-  Delete "$SMPROGRAMS\DV Analyzer\History.lnk"
-
-  RMDir "$SMPROGRAMS\DV Analyzer"
   RMDir "$INSTDIR"
 
   DeleteRegKey HKLM "${PRODUCT_REGISTRY}"
