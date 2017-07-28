@@ -113,6 +113,7 @@ Section Uninstall
   Delete "$INSTDIR\History.txt"
   Delete "$INSTDIR\License.html"
   Delete "$INSTDIR\ReadMe.txt"
+  Delete "$SMPROGRAMS\${PRODUCT_NAME}.lnk"
   RMDir "$INSTDIR"
 
   DeleteRegKey HKLM "${PRODUCT_REGISTRY}"
