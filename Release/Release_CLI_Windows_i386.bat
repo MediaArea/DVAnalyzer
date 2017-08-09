@@ -10,28 +10,28 @@ if "%BPATH%"=="" (
 )
 
 @rem --- Clean up ---
-del   AVPS_DV_Analyzer_CLI_Windows_i386.zip
-rmdir AVPS_DV_Analyzer_CLI_Windows_i386 /S /Q
-mkdir AVPS_DV_Analyzer_CLI_Windows_i386
+del   DVAnalyzer_CLI_Windows_i386.zip
+rmdir DVAnalyzer_CLI_Windows_i386 /S /Q
+mkdir DVAnalyzer_CLI_Windows_i386
 
 rem --- Copying : Exe ---
-xcopy ..\Project\MSVC2015\CLI\Win32\Release\dvanalyzer.exe AVPS_DV_Analyzer_CLI_Windows_i386\ /S
+xcopy ..\Project\MSVC2015\CLI\Win32\Release\dvanalyzer.exe DVAnalyzer_CLI_Windows_i386\ /S
 
 rem --- Copying : Plugins ---
-xcopy ..\Source\Resource\Plugin\Custom\* AVPS_DV_Analyzer_CLI_Windows_i386\Plugin\Custom\ /S
+xcopy ..\Source\Resource\Plugin\Custom\* DVAnalyzer_CLI_Windows_i386\Plugin\Custom\ /S
 
 rem --- Copying : Information files ---
-copy ..\License.html AVPS_DV_Analyzer_CLI_Windows_i386\
-copy ..\History_CLI.txt AVPS_DV_Analyzer_CLI_Windows_i386\History.txt
-copy Readme_CLI_Windows.txt AVPS_DV_Analyzer_CLI_Windows_i386\ReadMe.txt
+copy ..\License.html DVAnalyzer_CLI_Windows_i386\
+copy ..\History_CLI.txt DVAnalyzer_CLI_Windows_i386\History.txt
+copy Readme_CLI_Windows.txt DVAnalyzer_CLI_Windows_i386\ReadMe.txt
 
 rem --- Compressing Archive ---
-cd AVPS_DV_Analyzer_CLI_Windows_i386\
-%BPATH%\Windows\7-Zip\7z a -r -tzip ..\AVPS_DV_Analyzer_CLI_Windows_i386.zip *
+cd DVAnalyzer_CLI_Windows_i386\
+%BPATH%\Windows\7-Zip\7z a -r -tzip ..\DVAnalyzer_CLI_Windows_i386.zip *
 cd ..
 
 
 rem --- Clean up ---
 if "%1"=="SkipCleanUp" goto SkipCleanUp
-rmdir AVPS_DV_Analyzer_CLI_Windows_i386\ /S /Q
+rmdir DVAnalyzer_CLI_Windows_i386\ /S /Q
 :SkipCleanUp

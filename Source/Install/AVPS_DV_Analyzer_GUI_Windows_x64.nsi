@@ -2,8 +2,8 @@
 RequestExecutionLevel admin
 
 ; Some defines
-!define PRODUCT_NAME "AVPS DV Analyzer"
-!define PRODUCT_NAME_EXE "AVPS_DV_Analyzer.exe"
+!define PRODUCT_NAME "DV Analyzer"
+!define PRODUCT_NAME_EXE "${PRODUCT_NAME}.exe"
 !define PRODUCT_PUBLISHER "AudioVisual Preservation Solutions"
 !define PRODUCT_VERSION "1.4.1"
 !define PRODUCT_VERSION4 "${PRODUCT_VERSION}.0"
@@ -33,7 +33,7 @@ SetCompressor /FINAL /SOLID lzma
 ; Installer pages
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_RUN "$INSTDIR\${PRODUCT_NAME_EXE}"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "..\..\Source\Resource\Image\Windows_Finish.bmp"
 !insertmacro MUI_PAGE_FINISH
 ; Uninstaller pages
 !insertmacro MUI_UNPAGE_WELCOME
@@ -59,8 +59,8 @@ BrandingText " "
 ; Modern UI end
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "..\..\Release\AVPS_DV_Analyzer_GUI_${PRODUCT_VERSION}_Windows_x64.exe"
-InstallDir "$PROGRAMFILES64\AVPS\DV Analyzer"
+OutFile "..\..\Release\DVAnalyzer_GUI_${PRODUCT_VERSION}_Windows_x64.exe"
+InstallDir "$PROGRAMFILES64\DV Analyzer"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails nevershow
 ShowUnInstDetails nevershow
@@ -79,14 +79,24 @@ Section "SectionPrincipale" SEC01
 
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}.lnk" "$INSTDIR\${PRODUCT_NAME_EXE}" "" "" "" "" "" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
   SetOutPath "$INSTDIR"
-  File "/oname=AVPS_DV_Analyzer_GUI.exe" "..\..\Project\MSVC2015\GUI\x64\Release\AVPS_DV_Analyzer_GUI.exe"
+  File "/oname=${PRODUCT_NAME_EXE}" "..\..\Project\MSVC2015\GUI\x64\Release\AVPS_DV_Analyzer_GUI.exe"
   File "/oname=History.txt" "..\..\History_GUI.txt"
   File "..\..\License.html"
   File  "/oname=ReadMe.txt""..\..\Release\ReadMe_GUI_Windows.txt"
 
   WriteIniStr "$INSTDIR\${PRODUCT_NAME}.url" "InternetShortcut" "URL" "${PRODUCT_WEB_SITE}"
 
-  # Delete files that might be present from older installation
+  ; Delete files that might be present from older installation
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\App Paths\AVPS_DV_Analyzer.exe"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\AVPS DV Analyzer"
+  Delete "$PROGRAMFILES64\AVPS\DV Analyzer\AVPS DB Analyzer.url"
+  Delete "$PROGRAMFILES64\AVPS\DV Analyzer\AVPS_DV_Analyzer.exe"
+  Delete "$PROGRAMFILES64\AVPS\DV Analyzer\uninst.exe"
+  Delete "$PROGRAMFILES64\AVPS\DV Analyzer\License.html"
+  Delete "$PROGRAMFILES64\AVPS\DV Analyzer\History.txt"
+  Delete "$PROGRAMFILES64\AVPS\DV Analyzer\ReadMe.txt"
+  RMDir "$PROGRAMFILES64\AVPS\DV Analyzer"
+  RMDir "$PROGRAMFILES74\AVPS" ; only if empty
   Delete "$SMPROGRAMS\DV Analyzer\DV Analyzer.lnk"
   Delete "$SMPROGRAMS\DV Analyzer\Uninstall.lnk"
   Delete "$SMPROGRAMS\DV Analyzer\Website.lnk"
@@ -116,6 +126,7 @@ Section Uninstall
   Delete "$SMPROGRAMS\${PRODUCT_NAME}.lnk"
   RMDir "$INSTDIR"
 
+  SetRegView 64
   DeleteRegKey HKLM "${PRODUCT_REGISTRY}"
   DeleteRegKey /ifempty HKLM "${COMPANY_REGISTRY}"
   DeleteRegKey HKCU "${PRODUCT_REGISTRY}"
