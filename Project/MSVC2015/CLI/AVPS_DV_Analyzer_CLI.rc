@@ -22,7 +22,7 @@ BEGIN
             VALUE "FileVersion", "1,4,1,0"
             VALUE "InternalName", "dvanalyzer"
             VALUE "LegalCopyright", "AudioVisual Preserve Solutions"
-            VALUE "OriginalFilename", "DV_Analyzer_CLI.exe"
+            VALUE "OriginalFilename", "dvanalyzer.exe"
             VALUE "ProductName", "DV Analyzer"
             VALUE "ProductVersion", "1,4,1,0"
         END

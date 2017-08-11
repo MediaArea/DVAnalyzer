@@ -10,26 +10,26 @@ if "%BPATH%"=="" (
 )
 
 @rem --- Clean up ---
-del   AVPS_DV_Analyzer_GUI_Windows_x64.exe
-del   AVPS_DV_Analyzer_GUI_Windows_x64_WithoutInstaller.7z
-rmdir AVPS_DV_Analyzer_GUI_Windows_x64 /S /Q
-mkdir AVPS_DV_Analyzer_GUI_Windows_x64
+del   DVAnalyzer_GUI_Windows_x64.exe
+del   DVAnalyzer_GUI_Windows_x64_WithoutInstaller.7z
+rmdir DVAnalyzer_GUI_Windows_x64 /S /Q
+mkdir DVAnalyzer_GUI_Windows_x64
 
 @rem --- Copying : Exe ---
-copy  ..\Project\MSVC2015\GUI\x64\Release\AVPS_DV_Analyzer_GUI.exe AVPS_DV_Analyzer_GUI_Windows_x64\DV_Analyzer.exe
+copy  ..\Project\MSVC2015\GUI\x64\Release\AVPS_DV_Analyzer_GUI.exe DVAnalyzer_GUI_Windows_x64\DVAnalyzer.exe
 
 @rem --- Copying : Plugins ---
-xcopy ..\Source\Resource\Plugin\* AVPS_DV_Analyzer_GUI_Windows_x64\Plugin\ /S
+xcopy ..\Source\Resource\Plugin\* DVAnalyzer_GUI_Windows_x64\Plugin\ /S
 
 @rem --- Copying : Information files ---
-copy ..\License.html AVPS_DV_Analyzer_GUI_Windows_x64\
-copy ..\History_GUI.txt AVPS_DV_Analyzer_GUI_Windows_x64\History.txt
-copy ReadMe_GUI_Windows.txt AVPS_DV_Analyzer_GUI_Windows_x64\ReadMe.txt
+copy ..\License.html DVAnalyzer_GUI_Windows_x64\
+copy ..\History_GUI.txt DVAnalyzer_GUI_Windows_x64\History.txt
+copy ReadMe_GUI_Windows.txt DVAnalyzer_GUI_Windows_x64\ReadMe.txt
 
 
 rem --- Compressing Archive ---
-cd AVPS_DV_Analyzer_GUI_Windows_x64\
-%BPATH%\Windows\7-Zip\7z a -r -t7z -mx9 ..\AVPS_DV_Analyzer_GUI_Windows_x64_WithoutInstaller.7z *
+cd DVAnalyzer_GUI_Windows_x64\
+%BPATH%\Windows\7-Zip\7z a -r -t7z -mx9 ..\DVAnalyzer_GUI_Windows_x64_WithoutInstaller.7z *
 cd ..
 
 rem --- Installer ---
@@ -37,5 +37,5 @@ rem --- Installer ---
 
 rem --- Clean up ---
 if "%1"=="SkipCleanUp" goto SkipCleanUp
-rmdir AVPS_DV_Analyzer_GUI_Windows_x64\ /S /Q
+rmdir DVAnalyzer_GUI_Windows_x64\ /S /Q
 :SkipCleanUp
