@@ -4,6 +4,12 @@ Notes:
 - Deleted
 x Correction
 
+Version 1.4.2, 2017-09-26
+--------------
++ Packages for latest versions of Debian, Ubuntu, Fedora, RHEL/CentOS...
++ Update of third party libs (Qt, MediaInfo)
+x Drag and drop was not working on newest versions of macOS
+
 Version 1.4.1, 2012-03-19
 --------------
 + Update MediaInfo library to v0.7.54
