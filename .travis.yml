@@ -1,0 +1,26 @@
+language: cpp
+
+sudo: required
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+    - os: osx
+      compiler: clang
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] ; then sudo apt-get update -qq ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] ; then sudo apt-get install -y pkg-config zlib1g-dev libqt4-dev ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] ; then git -C .. clone https://github.com/MediaArea/ZenLib.git ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] ; then pushd ../ZenLib/Project/GNU/Library && ./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install && popd ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] ; then git -C .. clone https://github.com/MediaArea/MediaInfoLib.git ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] ; then pushd ../MediaInfoLib/Project/GNU/Library && ./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install && popd ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then brew update ; true ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then brew install qt5 ; true ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then git -C .. clone https://github.com/MediaArea/ZenLib.git ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then pushd ../ZenLib/Project/GNU/Library && ./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install && popd ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then git -C .. clone https://github.com/MediaArea/MediaInfoLib.git ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then pushd ../MediaInfoLib/Project/GNU/Library && ./autogen.sh && ./configure --prefix=/usr/local && make && sudo make install && popd ; fi
+
+script: export PATH=/usr/local/opt/qt5/bin:$PATH && cd Project/GNU/CLI/ && ./autogen.sh && ./configure && make && cd ../../QtCreator && ./prepare INCLUDEPATH+=/usr/local/include CONFIG+=c++11 -after QMAKE_MACOSX_DEPLOYMENT_TARGET=10.9 && make

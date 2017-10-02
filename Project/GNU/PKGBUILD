@@ -17,16 +17,15 @@ prepare() {
     sh ./autogen
     ./configure --prefix=/usr
 
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI
-    sh ./autogen
-    CXXFLAGS="-fPIC" ./configure --prefix=/usr
+    cd "${srcdir}"/AVPS_DV_Analyzer/Project/QtCreator
+    sh ./prepare BINDIR=/usr/bin
 }
 
 build() {
     cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/CLI
     make
 
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI
+    cd "${srcdir}"/AVPS_DV_Analyzer/Project/QtCreator
     make
 }
 
@@ -46,8 +45,8 @@ package_dvanalyzer-gui() {
     pkgdesc="${pkgdesc} (GUI)"
     depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt5-base')
     
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}"/AVPS_DV_Analyzer/Project/QtCreator
+    make INSTALL_ROOT="${pkgdir}" install
 
     install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
     install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/History_GUI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
