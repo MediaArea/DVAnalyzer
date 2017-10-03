@@ -81,9 +81,9 @@ fi
 cd $Home
 
 #############################################################################
-# AVPS_DV_Analyzer
-if test -e AVPS_DV_Analyzer/Project/GNU/CLI/configure; then
- cd AVPS_DV_Analyzer/Project/GNU/CLI/
+# DVAnalyzer
+if test -e DVAnalyzer/Project/GNU/CLI/configure; then
+ cd DVAnalyzer/Project/GNU/CLI/
  test -e Makefile && rm Makefile
  chmod u+x configure
  ./configure $AVPS_DV_Analyzer_Options $*
@@ -91,17 +91,17 @@ if test -e AVPS_DV_Analyzer/Project/GNU/CLI/configure; then
   make clean
   Zen_Make
   if test -e dvanalyzer; then
-   echo AVPS_DV_Analyzer compiled
+   echo DVAnalyzer compiled
   else
-   echo Problem while compiling AVPS_DV_Analyzer
+   echo Problem while compiling DVAnalyzer
    exit
   fi
  else
-  echo Problem while configuring AVPS_DV_Analyzer
+  echo Problem while configuring DVAnalyzer
   exit
  fi
 else
- echo AVPS_DV_Analyzer directory is not found
+ echo DVAnalyzer directory is not found
  exit
 fi
 cd $Home
@@ -109,5 +109,5 @@ cd $Home
 #############################################################################
 # Going home
 cd $Home
-echo "AVPS_DV_Analyzer executable is in AVPS_DV_Analyzer/Project/GNU/CLI"
-echo "For installing, cd AVPS_DV_Analyzer/Project/GNU/CLI && make install"
+echo "DVAnalyzer executable is in DVAnalyzer/Project/GNU/CLI"
+echo "For installing, cd DVAnalyzer/Project/GNU/CLI && make install"
