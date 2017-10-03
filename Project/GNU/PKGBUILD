@@ -13,19 +13,19 @@ arch=('i686' 'x86_64')
 makedepends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt5-base' 'qt5-tools' 'ca-certificates')
 
 prepare() {
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/CLI
+    cd "${srcdir}"/DVAnalyzer/Project/GNU/CLI
     sh ./autogen
     ./configure --prefix=/usr
 
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/QtCreator
+    cd "${srcdir}"/DVAnalyzer/Project/QtCreator
     sh ./prepare BINDIR=/usr/bin
 }
 
 build() {
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/CLI
+    cd "${srcdir}"/DVAnalyzer/Project/GNU/CLI
     make
 
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/QtCreator
+    cd "${srcdir}"/DVAnalyzer/Project/QtCreator
     make
 }
 
@@ -33,28 +33,28 @@ package_dvanalyzer() {
     pkgdesc="${pkgdesc} (CLI)"
     depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54')
 
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/CLI
+    cd "${srcdir}"/DVAnalyzer/Project/GNU/CLI
     make DESTDIR="${pkgdir}" install
 
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/History_CLI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Release/ReadMe_CLI_Linux.txt "${pkgdir}"/usr/share/doc/${pkgname}/ReadMe.txt
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/History_CLI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Release/ReadMe_CLI_Linux.txt "${pkgdir}"/usr/share/doc/${pkgname}/ReadMe.txt
 }
 
 package_dvanalyzer-gui() {
     pkgdesc="${pkgdesc} (GUI)"
     depends=('libzen>=0.4.25' 'libmediainfo>=0.7.54' 'qt5-base')
     
-    cd "${srcdir}"/AVPS_DV_Analyzer/Project/QtCreator
+    cd "${srcdir}"/DVAnalyzer/Project/QtCreator
     make INSTALL_ROOT="${pkgdir}" install
 
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/History_GUI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Release/ReadMe_GUI_Linux.txt "${pkgdir}"/usr/share/doc/${pkgname}/ReadMe.txt
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/License.html "${pkgdir}"/usr/share/licenses/${pkgname}/License.html
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/History_GUI.txt "${pkgdir}"/usr/share/doc/${pkgname}/History.txt
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Release/ReadMe_GUI_Linux.txt "${pkgdir}"/usr/share/doc/${pkgname}/ReadMe.txt
 
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Source/Resource/Image/AVPS/logo_sign_alpha_square.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/dvanalyzer-gui.png
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Source/Resource/Image/AVPS/logo_sign_alpha_square.png "${pkgdir}"/usr/share/pixmaps/dvanalyzer-gui.png
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI/dvanalyzer-gui.desktop "${pkgdir}"/usr/share/applications/dvanalyzer-gui.desktop
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI/dvanalyzer-gui.kde3.desktop "${pkgdir}"/usr/share/apps/konqueror/servicemenus/dvanalyzer-gui.desktop
-    install -D -m 0644 "${srcdir}"/AVPS_DV_Analyzer/Project/GNU/GUI/dvanalyzer-gui.kde4.desktop "${pkgdir}"/usr/share/kde4/services/ServiceMenus/dvanalyzer-gui.desktop
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Source/Resource/Image/AVPS/logo_sign_alpha_square.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/dvanalyzer-gui.png
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Source/Resource/Image/AVPS/logo_sign_alpha_square.png "${pkgdir}"/usr/share/pixmaps/dvanalyzer-gui.png
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.desktop "${pkgdir}"/usr/share/applications/dvanalyzer-gui.desktop
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.kde3.desktop "${pkgdir}"/usr/share/apps/konqueror/servicemenus/dvanalyzer-gui.desktop
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.kde4.desktop "${pkgdir}"/usr/share/kde4/services/ServiceMenus/dvanalyzer-gui.desktop
 }

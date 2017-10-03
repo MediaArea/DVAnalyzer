@@ -3,12 +3,10 @@
 #############################################################################
 # Configure
 Home=`pwd`
-AVPS_DV_Analyzer_Options="--enable-staticlibs"
 MediaInfoLib_Options="--enable-static --disable-shared"
 ZenLib_Options="--enable-static --disable-shared"
 
 if [ "$(uname -s)" = "Darwin" ] ; then
-    AVPS_DV_Analyzer_Options="$AVPS_DV_Analyzer_Options --with-macosx-version-min=10.5"
     MediaInfoLib_Options="$MediaInfoLib_Options --with-macosx-version-min=10.5"
     ZenLib_Options="$ZenLib_Options --with-macosx-version-min=10.5"
 fi
@@ -81,9 +79,9 @@ fi
 cd $Home
 
 #############################################################################
-# AVPS_DV_Analyzer
-if test -e AVPS_DV_Analyzer/Project/QtCreator/dvanalyzer-gui.pro; then
- cd AVPS_DV_Analyzer/Project/QtCreator
+# DVAnalyzer
+if test -e DVAnalyzer/Project/QtCreator/dvanalyzer-gui.pro; then
+ cd DVAnalyzer/Project/QtCreator
  test -e Makefile && rm Makefile
  chmod u+x prepare
  ./prepare STATIC_LIBS=1
@@ -91,17 +89,17 @@ if test -e AVPS_DV_Analyzer/Project/QtCreator/dvanalyzer-gui.pro; then
   make clean
   Zen_Make
   if test -e dvanalyzer-gui  || test -e "DV Analyzer.app"; then
-   echo AVPS_DV_Analyzer compiled
+   echo DVAnalyzer compiled
   else
-   echo Problem while compiling AVPS_DV_Analyzer
+   echo Problem while compiling DVAnalyzer
    exit
   fi
  else
-  echo Problem while configuring AVPS_DV_Analyzer
+  echo Problem while configuring DVAnalyzer
   exit
  fi
 else
- echo AVPS_DV_Analyzer directory is not found
+ echo DVAnalyzer directory is not found
  exit
 fi
 cd $Home
@@ -109,4 +107,4 @@ cd $Home
 #############################################################################
 # Going home
 cd $Home
-echo "AVPS_DV_Analyzer executable is in AVPS_DV_Analyzer/Project/QtCreator"
+echo "DVAnalyzer executable is in DVAnalyzer/Project/QtCreator"

@@ -108,7 +108,7 @@ meaningful ways when working with and preserving DV content. This is
 particularly useful in documenting source material of edited DV content.
 
 %prep
-%setup -q -n AVPS_DV_Analyzer
+%setup -q -n DVAnalyzer
 dos2unix     *.txt Release/*.txt
 %__chmod 644 *.html *.txt Release/*.txt
 
