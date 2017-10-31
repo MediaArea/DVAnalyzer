@@ -15,7 +15,7 @@ rmdir DVAnalyzer_CLI_Windows_i386 /S /Q
 mkdir DVAnalyzer_CLI_Windows_i386
 
 rem --- Copying : Exe ---
-xcopy ..\Project\MSVC2015\CLI\Win32\Release\dvanalyzer.exe DVAnalyzer_CLI_Windows_i386\ /S
+xcopy ..\Project\MSVC2017\CLI\Win32\Release\dvanalyzer.exe DVAnalyzer_CLI_Windows_i386\ /S
 
 rem --- Copying : Plugins ---
 xcopy ..\Source\Resource\Plugin\Custom\* DVAnalyzer_CLI_Windows_i386\Plugin\Custom\ /S
