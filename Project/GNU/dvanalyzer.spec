@@ -181,6 +181,13 @@ popd
   %suse_update_desktop_file -n %{buildroot}/%{_datadir}/kde4/services/ServiceMenus/dvanalyzer-gui.desktop AudioVideo AudioVideoEditing
   %suse_update_desktop_file -n %{buildroot}/%{_datadir}/kservices5/ServiceMenus/dvanalyzer-gui.desktop AudioVideo AudioVideoEditing
 %endif
+%if %{undefined fedora_version} || 0%{?fedora_version} < 26
+%__install -dm 755 %{buildroot}%{_datadir}/appdata/
+%__install -m 644 Project/GNU/GUI/dvanalyzer-gui.metainfo.xml %{buildroot}%{_datadir}/appdata/dvanalyzer-gui.appdata.xml
+%else
+%__install -dm 755 %{buildroot}%{_datadir}/metainfo/
+%__install -m 644 Project/GNU/GUI/dvanalyzer-gui.metainfo.xml %{buildroot}%{_datadir}/metainfo/dvanalyzer-gui.metainfo.xml
+%endif
 
 %clean
 [ -d "%{buildroot}" -a "%{buildroot}" != "" ] && %__rm -rf "%{buildroot}"
@@ -213,6 +220,13 @@ popd
 %dir %{_datadir}/kservices5
 %dir %{_datadir}/kservices5/ServiceMenus
 %{_datadir}/kservices5/ServiceMenus/*.desktop
+%if 0%{?fedora_version} && 0%{?fedora_version} >= 26
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/*.xml
+%else
+%dir %{_datadir}/appdata
+%{_datadir}/appdata/*.xml
+%endif
 
 %changelog
 * Tue Jan 01 2009 Jerome Martinez <zen@mediaarea.net> - 1.4.2-0

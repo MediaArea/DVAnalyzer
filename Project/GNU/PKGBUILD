@@ -58,4 +58,5 @@ package_dvanalyzer-gui() {
     install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.kde3.desktop "${pkgdir}"/usr/share/apps/konqueror/servicemenus/dvanalyzer-gui.desktop
     install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.kde4.desktop "${pkgdir}"/usr/share/kde4/services/ServiceMenus/dvanalyzer-gui.desktop
     install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.kde4.desktop "${pkgdir}"/usr/share/kservices5/ServiceMenus/dvanalyzer-gui.desktop
+    install -D -m 0644 "${srcdir}"/DVAnalyzer/Project/GNU/GUI/dvanalyzer-gui.metainfo.xml "${pkgdir}"/usr/share/metainfo/dvanalyzer-gui.metainfo.xml
 }
