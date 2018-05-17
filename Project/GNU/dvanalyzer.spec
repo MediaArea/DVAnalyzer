@@ -17,6 +17,7 @@ License:		GPL
 URL:			http://avpreserve.com/dvanalyzer/
 Packager:		Jerome Martinez <zen@mediaarea.net>
 Source0:		dvanalyzer_%{version}-1.tar.gz
+Prefix:		%{_prefix}
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	dos2unix
 BuildRequires: 	gcc-c++
