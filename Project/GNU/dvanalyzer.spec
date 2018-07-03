@@ -4,9 +4,9 @@
 
 # norootforbuild
 
-%define dvanalyzer_version		1.4.2
-%define libmediainfo_version	0.7.99
-%define libzen_version			0.4.37
+%global dvanalyzer_version		1.4.2
+%global libmediainfo_version	0.7.99
+%global libzen_version			0.4.37
 
 Name:			dvanalyzer
 Version:		%dvanalyzer_version
