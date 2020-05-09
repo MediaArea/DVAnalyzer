@@ -31,6 +31,9 @@ BuildRequires:	update-desktop-files
 BuildRequires:	libmediainfo-devel >= %libmediainfo_version
 BuildRequires:	libzen-devel >= %libzen_version
 BuildRequires: 	zlib-devel
+%if 0%{?rhel_version} >= 800 || 0%{?centos_version} >= 800
+BuildRequires:  gdb
+%endif
 %if 0%{?mageia}
 BuildRequires:  sane-backends-iscan
 %if 0%{?mageia} >= 6
