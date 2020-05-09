@@ -142,8 +142,9 @@ void Core::Analysis_Frame_Add(const MediaInfo_Event_DvDif_Analysis_Frame_0* Fram
     if (ToPush.Errors)
     {
         size_t SizeToCopy=std::strlen(FrameData->Errors)+1;
-        ToPush.Errors=new char[SizeToCopy];
-        std::memcpy(ToPush.Errors, FrameData->Errors, SizeToCopy);
+        char* Errors=new char[SizeToCopy];
+        std::memcpy(Errors, FrameData->Errors, SizeToCopy);
+        ToPush.Errors=Errors;
     }
     Analysis[Analysis.size()-1]->push_back(ToPush);
 }
