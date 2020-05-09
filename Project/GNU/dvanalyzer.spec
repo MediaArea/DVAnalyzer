@@ -13,7 +13,7 @@ Version:		%dvanalyzer_version
 Release:		1
 Summary:		Supplies technical and tag information about a video or audio file (CLI)
 Group:			Productivity/Multimedia/Other
-License:		GPL
+License:		GPL-3.0-or-later
 URL:			http://avpreserve.com/dvanalyzer/
 Packager:		Jerome Martinez <zen@mediaarea.net>
 Source0:		dvanalyzer_%{version}-1.tar.gz
