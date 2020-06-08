@@ -63,10 +63,10 @@ if [ "$KIND" = "CLI" ]; then
 
     mkdir -p "${FILES}-Root/usr/local/bin"
     cp "../GNU/CLI/${APPNAME_lower}" "${FILES}-Root/usr/local/bin"
-    codesign -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}-Root/usr/local/bin/${APPNAME_lower}"
+    codesign --deep --options=runtime -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}-Root/usr/local/bin/${APPNAME_lower}"
 
     pkgbuild --root "${FILES}-Root" --identifier "net.mediaarea.${APPNAME_lower}.mac-${KIND_lower}" --sign "Developer ID Installer: ${SIGNATURE}" --version "${VERSION}" "${FILES}/${APPNAME_lower}.pkg"
-    codesign -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME_lower}.pkg"
+    codesign --deep --options=runtime -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME_lower}.pkg"
 
 fi
 
@@ -106,13 +106,13 @@ if [ "$KIND" = "GUI" ]; then
             sed -i '' 's/_debug//g' Resources/Info.plist
         fi
         popd
-        codesign -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME}.app/Contents/Frameworks/${FRAMEWORK}.framework"
+        codesign --deep --options=runtime -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME}.app/Contents/Frameworks/${FRAMEWORK}.framework"
     done
 
     find "${FILES}/${APPNAME}.app/Contents/PlugIns" -name "*.dylib" -exec codesign -f -s "Developer ID Application: ${SIGNATURE}" --verbose "{}" \;
 
-    codesign -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME}.app/Contents/MacOS/${APPNAME}"
-    codesign -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME}.app"
+    codesign --deep --options=runtime -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME}.app/Contents/MacOS/${APPNAME}"
+    codesign --deep --options=runtime -f -s "Developer ID Application: ${SIGNATURE}" --verbose "${FILES}/${APPNAME}.app"
 fi
 
 echo
@@ -144,6 +144,7 @@ echo
 echo ========== Convert to compressed image ==========
 echo
 hdiutil convert "${TEMPDMG}" -format UDBZ -o "${FINALDMG}"
+codesign --deep --options=runtime --force --verbose --sign "Developer ID Application: ${SIGNATURE}" "${FINALDMG}"
 
 unset -v APPNAME APPNAME_lower KIND KIND_lower VERSION SIGNATURE
 unset -v TEMPDMG FINALDMG FILES DEVICE
