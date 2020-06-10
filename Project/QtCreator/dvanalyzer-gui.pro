@@ -18,6 +18,7 @@ macx {
     QMAKE_INFO_PLIST = ../Mac/Info.plist
     ICON = ../Mac/Logo.icns
 
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.10
     contains(MACSTORE, yes|1) {
         QMAKE_CFLAGS += -gdwarf-2
         QMAKE_CXXFLAGS += -gdwarf-2
