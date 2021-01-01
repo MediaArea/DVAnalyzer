@@ -1,0 +1,85 @@
+name: Checks
+
+on: [push, pull_request]
+
+jobs:
+  Unix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Dependencies
+        run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+            sudo apt-get update -y
+            sudo apt-get install -y zlib1g-dev qtbase5-dev qt5-qmake qt5-default
+          fi
+          if [ "$RUNNER_OS" == "macOS" ]; then
+            brew install automake qt
+          fi
+      - name: Get ZenLib info
+        id: zenlib-info
+        run: |
+          echo "::set-output name=hash::$(git ls-remote https://github.com/MediaArea/ZenLib.git HEAD | cut -f1)"
+          echo "::set-output name=path::$(dirname $PWD)/ZenLib"
+      - name: ZenLib cache
+        id: zenlib-cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.zenlib-info.outputs.path }}
+          key: ${{ runner.os }}-ZenLib-${{ steps.zenlib-info.outputs.hash }}
+      - name: ZenLib
+        if: steps.zenlib-cache.outputs.cache-hit != 'true'
+        run: |
+          git -C .. clone --depth=1 https://github.com/MediaArea/ZenLib.git
+          pushd ../ZenLib/Project/GNU/Library
+            autoreconf -if
+            ./configure --enable-static
+            make
+          popd
+      - name: Get MediaInfoLib info
+        id: mediainfolib-info
+        run: |
+          echo "::set-output name=hash::$(git ls-remote https://github.com/MediaArea/MediaInfoLib.git HEAD | cut -f1)"
+          echo "::set-output name=path::$(dirname $PWD)/MediaInfoLib"
+      - name: MediaInfoLib cache
+        id: mediainfolib-cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.mediainfolib-info.outputs.path }}
+          key: ${{ runner.os }}-MediaInfoLib-${{ steps.mediainfolib-info.outputs.hash }}
+      - name: MediaInfoLib
+        if: steps.mediainfolib-cache.outputs.cache-hit != 'true'
+        run: |
+          git -C .. clone --depth=1 https://github.com/MediaArea/MediaInfoLib.git
+          pushd ../MediaInfoLib/Project/GNU/Library
+            autoreconf -if
+            ./configure --enable-static
+            make
+          popd
+          
+      - name: Configure
+        run: |
+          cd Project/GNU/CLI
+          autoreconf -if
+          ./configure
+      - name: Build
+        run: |
+          cd Project/GNU/CLI
+          make
+      - name: Configure GUI
+        run: |
+          cd Project/QtCreator
+          export PATH=/usr/local/opt/qt/bin:$PATH
+          ./prepare INCLUDEPATH+=/usr/local/include CONFIG+=c++11 -after QMAKE_MACOSX_DEPLOYMENT_TARGET=10.9
+      - name: Build GUI
+        run: |
+          cd Project/QtCreator
+          export PATH=/usr/local/opt/qt/bin:$PATH
+          make
