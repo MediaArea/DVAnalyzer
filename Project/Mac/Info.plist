@@ -23,7 +23,7 @@
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.6</string>
+	<string>10.10</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>(c) AVPS</string>
 	<key>NSPrincipalClass</key>
