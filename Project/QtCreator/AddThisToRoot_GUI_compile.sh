@@ -7,8 +7,8 @@ MediaInfoLib_Options="--enable-static --disable-shared"
 ZenLib_Options="--enable-static --disable-shared"
 
 if [ "$(uname -s)" = "Darwin" ] ; then
-    MediaInfoLib_Options="$MediaInfoLib_Options --with-macosx-version-min=10.7"
-    ZenLib_Options="$ZenLib_Options --with-macosx-version-min=10.7"
+    MediaInfoLib_Options="$MediaInfoLib_Options --with-macosx-version-min=10.10"
+    ZenLib_Options="$ZenLib_Options --with-macosx-version-min=10.10"
 fi
 
 #############################################################################

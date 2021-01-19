@@ -8,9 +8,9 @@ MediaInfoLib_Options="--enable-static --disable-shared"
 ZenLib_Options="--enable-static --disable-shared"
 
 if [ "$(uname -s)" = "Darwin" ] ; then
-    AVPS_DV_Analyzer_Options="$AVPS_DV_Analyzer_Options --with-macosx-version-min=10.5"
-    MediaInfoLib_Options="$MediaInfoLib_Options --with-macosx-version-min=10.5"
-    ZenLib_Options="$ZenLib_Options --with-macosx-version-min=10.5"
+    AVPS_DV_Analyzer_Options="$AVPS_DV_Analyzer_Options --with-macosx-version-min=10.10"
+    MediaInfoLib_Options="$MediaInfoLib_Options --with-macosx-version-min=10.10"
+    ZenLib_Options="$ZenLib_Options --with-macosx-version-min=10.10"
 fi
 
 #############################################################################
