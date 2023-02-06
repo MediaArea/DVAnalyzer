@@ -18,10 +18,10 @@ jobs:
         run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
             sudo apt-get update -y
-            sudo apt-get install -y zlib1g-dev qtbase5-dev qt5-qmake qt5-default
+            sudo apt-get install -y zlib1g-dev qtbase5-dev qt5-qmake qtchooser
           fi
           if [ "$RUNNER_OS" == "macOS" ]; then
-            brew install automake qt
+            brew install automake qt@5
           fi
       - name: Get ZenLib info
         id: zenlib-info
@@ -76,10 +76,11 @@ jobs:
       - name: Configure GUI
         run: |
           cd Project/QtCreator
-          export PATH=/usr/local/opt/qt/bin:$PATH
+          export PATH=/usr/local/opt/qt@5/bin:$PATH
+          export QT_SELECT=qt5
           ./prepare INCLUDEPATH+=/usr/local/include CONFIG+=c++11 -after QMAKE_MACOSX_DEPLOYMENT_TARGET=10.9
       - name: Build GUI
         run: |
           cd Project/QtCreator
-          export PATH=/usr/local/opt/qt/bin:$PATH
+          export PATH=/usr/local/opt/qt@5/bin:$PATH
           make
