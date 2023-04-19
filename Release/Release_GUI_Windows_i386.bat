@@ -33,7 +33,9 @@ cd DVAnalyzer_GUI_Windows_i386\
 cd ..
 
 rem --- Installer ---
-%BPATH%\Windows\NSIS\makensis ..\Source\Install\AVPS_DV_Analyzer_GUI_Windows_i386.nsi
+pushd %BPATH%\Windows\NSIS
+makensis.exe "%~dp0\..\Source\Install\AVPS_DV_Analyzer_GUI_Windows_i386.nsi"
+popd
 
 rem --- Clean up ---
 if "%1"=="SkipCleanUp" goto SkipCleanUp
