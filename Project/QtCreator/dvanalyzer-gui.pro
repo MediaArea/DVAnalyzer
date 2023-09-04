@@ -34,7 +34,7 @@ unix {
 
 TEMPLATE = app
 
-CONFIG += qt release
+CONFIG += qt release c++11
 CONFIG += no_keywords
 
 DEFINES          +=  _UNICODE
