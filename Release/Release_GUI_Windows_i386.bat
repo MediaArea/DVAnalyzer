@@ -16,7 +16,7 @@ rmdir DVAnalyzer_GUI_Windows_i386 /S /Q
 mkdir DVAnalyzer_GUI_Windows_i386
 
 @rem --- Copying : Exe ---
-copy  ..\Project\MSVC2017\GUI\Win32\Release\AVPS_DV_Analyzer_GUI.exe DVAnalyzer_GUI_Windows_i386\DVAnalyzer.exe
+copy  ..\Project\MSVC2022\GUI\Win32\Release\AVPS_DV_Analyzer_GUI.exe DVAnalyzer_GUI_Windows_i386\DVAnalyzer.exe
 
 @rem --- Copying : Plugins ---
 xcopy ..\Source\Resource\Plugin\* DVAnalyzer_GUI_Windows_i386\Plugin\ /S
