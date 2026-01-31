@@ -60,6 +60,10 @@ unix:exists(../../../MediaInfoLib/Project/GNU/Library/libmediainfo-config) {
         error("libmediainfo not found on system")
     }
     LIBS += $$system(pkg-config --libs libmediainfo)
+} else:win32 {
+    INCLUDEPATH += ../../../MediaInfoLib/Source
+    contains(QT_ARCH, i386): LIBS += $${_PRO_FILE_PWD_}/../../../MediaInfoLib/Project/MSVC2022/Win32/Release/MediaInfo-Static.lib
+    contains(QT_ARCH, x86_64): LIBS += $${_PRO_FILE_PWD_}/../../../MediaInfoLib/Project/MSVC2022/x64/Release/MediaInfo-Static.lib
 }
 
 unix:exists(../../../ZenLib/Project/GNU/Library/libzen-config) {
@@ -74,6 +78,15 @@ unix:exists(../../../ZenLib/Project/GNU/Library/libzen-config) {
 } else:unix {
     PKGCONFIG        += libzen
     message("libzen      : system")
+} else:win32 {
+    INCLUDEPATH += ../../../ZenLib/Source
+    contains(QT_ARCH, i386): LIBS += $${_PRO_FILE_PWD_}/../../../MediaInfoLib/Project/MSVC2022/Win32/Release/ZenLib.lib
+    contains(QT_ARCH, x86_64): LIBS += $${_PRO_FILE_PWD_}/../../../MediaInfoLib/Project/MSVC2022/x64/Release/ZenLib.lib
+}
+
+win32 {
+    contains(QT_ARCH, i386): LIBS += $${_PRO_FILE_PWD_}/../../../zlib/contrib/vstudio/vc17/x86/ZlibStatRelease/zlibstat.lib
+    contains(QT_ARCH, x86_64): LIBS += $${_PRO_FILE_PWD_}/../../../zlib/contrib/vstudio/vc17/x64/ZlibStatRelease/zlibstat.lib
 }
 
 SOURCES += \
