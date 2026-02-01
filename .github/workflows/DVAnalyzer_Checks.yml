@@ -30,7 +30,7 @@ jobs:
           echo "::set-output name=path::$(dirname $PWD)/ZenLib"
       - name: ZenLib cache
         id: zenlib-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ steps.zenlib-info.outputs.path }}
           key: ${{ runner.os }}-ZenLib-${{ steps.zenlib-info.outputs.hash }}
@@ -50,7 +50,7 @@ jobs:
           echo "::set-output name=path::$(dirname $PWD)/MediaInfoLib"
       - name: MediaInfoLib cache
         id: mediainfolib-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ steps.mediainfolib-info.outputs.path }}
           key: ${{ runner.os }}-MediaInfoLib-${{ steps.mediainfolib-info.outputs.hash }}
